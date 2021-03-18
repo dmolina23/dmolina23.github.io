@@ -29,8 +29,6 @@ La opción del contacto no está todavía disponible.
 
 Las barras de _"skills"_ se mueven a la misma vez en cuanto se abre la página, por tanto no se ve la animación ya que la página está inicialmente en la sección principal.
 
-En Google Chrome, no cargan los estilos.
-
 &nbsp;
 
 ## Sobre los proyectos:
