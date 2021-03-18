@@ -12,7 +12,10 @@ $.controller.activate = function (panel_name) {
     $.controller.active_panel = panel_name;
 
 };
-
+/**
+ * Método para settear el panel inicial
+ * @param {*} panel_inicial panel que queramos poner como inicial
+ */
 $.controller.init = function (panel_inicial) {
 
     // console.log("Panel inicial="+panel_inicial);
@@ -30,8 +33,13 @@ $.controller.init = function (panel_inicial) {
 
     });
 
+    // "Esconde" el div en el que estemos
     $("div.panel").hide();
+
+    // Muestra el panel al que queramos ir (eligiendo en el menú)
     $(panel_inicial).show();
+    
+    // Activamos el controlador y setteamos con el panel inicial 
     $.controller.active_panel = panel_inicial;
     $.controller.panel_inicial = panel_inicial;
 

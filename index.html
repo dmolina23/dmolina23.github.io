@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">dmolina23</a>
+        <a href="#" class="navbar-brand">DMolina23</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#entradas_menu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,13 +22,7 @@
                     <a href="#" class="nav-link" id="menu_inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" id="menu_desarrollo_web">Desarrollo Web</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" id="menu_programas_java">Programas Java</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" id="menu_bases_de_datos">Bases de Datos</a>
+                    <a href="#proyectos" class="nav-link" id="menu_desarrollo_web">Portfolio</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" id="menu_contacto">Contacto</a>
@@ -36,22 +30,249 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div id="panel_inicio" class="panel">
-            <p>Inicio</p>
+    <section id="section1">
+        <div class="card-grid">
+            <a class="card" href="#web">
+                <div class="card__background" style="background-image: url(img/img1.jfif)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Web designer & Web developer</p>
+                    <h3 class="card__heading">Desarrollo Web</h3>
+                </div>
+            </a>
+            <a class="card" href="#pro">
+                <div class="card__background" style="background-image: url(img/img2.jpg)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Android and cross-platform developer</p>
+                    <h3 class="card__heading">Programación</h3>
+                </div>
+            </a>
+            <a class="card" href="#bases">
+                <div class="card__background" style="background-image: url(img/img3.jpg)">
+                </div>
+                <div class="card__content">
+                    <p class="card__category">Data-bases designer</p>
+                    <h3 class="card__heading">Bases de datos</h3>
+                </div>
+                </li>
+                <a class="card" href="#proyectos">
+                    <div class="card__background" style="background-image: url(img/img4.jpg)">
+                    </div>
+                    <div class="card__content">
+                        <p class="card__category">Personal projects</p>
+                        <h3 class="card__heading">Mis Proyectos</h3>
+                    </div>
+                </a>
+            </a>
         </div>
-        <div id="panel_desarrollo_web" class="panel">
-            <p>Desarrollo Web</p>
+    </section>
+    <section id="web">
+        <h1>Desarrollo Web</h1>
+        <div class="content">
+            <div class="skill-bars" style="width: 45%; float:left">
+                <div class="bar">
+                    <div class="info">
+                        <span>HTML</span>
+                    </div>
+                    <div class="progress-line html">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="progress-line javascript">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>CSS</span>
+                    </div>
+                    <div class="progress-line css">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>WebApps</span>
+                    </div>
+                    <div class="progress-line webapps">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 10%; float: center;"></div>
+            <div style="width: 45%; float:right">
+                <p>Vemos día a día muchas páginas web, es por eso que se hace necesario aprender
+                    cómo funcionan y cómo se crean las mismas.<br><br>HTML, CSS y, sobretodo, JavaScript
+                    se nos hacen imprescindibles a la hora de crear páginas que sean llamativas e intuitivas
+                    a la misma vez que funcionales.
+                </p>
+            </div>
         </div>
-        <div id="panel_desarrollo_java" class="panel">
-            <p>Programas Java</p>
+    </section>
+    <section id="pro">
+        <h1>Programación</h1>
+        <div class="content">
+            <div style="width: 45%; float:left">
+                <p>Sin la programación, todos los dispositivos de los que hoy disfrutamos no
+                    existirían o, al menos, no funcionarían.<br><br>Es muy importante saber programar
+                    para saber y entender cómo funciona todo lo tecnológico que nos rodea.
+                </p>
+            </div>
+            <div style="width: 10%; float: center;"></div>
+            <div class="skill-bars" style="width: 45%; float:right">
+                <div class="bar">
+                    <div class="info">
+                        <span>Java</span>
+                    </div>
+                    <div class="progress-line java">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>Python</span>
+                    </div>
+                    <div class="progress-line python">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>React</span>
+                    </div>
+                    <div class="progress-line react">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>NodeJS</span>
+                    </div>
+                    <div class="progress-line nodejs">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="bases">
+        <h1>Bases de datos</h1>
+        <div class="content">
+            <div class="skill-bars" style="width: 45%; float:left">
+                <div class="bar">
+                    <div class="info">
+                        <span>Oracle</span>
+                    </div>
+                    <div class="progress-line oracle">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>MySQL</span>
+                    </div>
+                    <div class="progress-line mysql">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>FireBase</span>
+                    </div>
+                    <div class="progress-line firebase">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>Python</span>
+                    </div>
+                    <div class="progress-line python">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="info">
+                        <span>MySQL</span>
+                    </div>
+                    <div class="progress-line mysql">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 10%; float: center;"></div>
+            <div style="width: 45%; float:right">
+                <p>Cualquier aplicación que usamos normalmente no funcionaría
+                    sin una base de datos. Spotify, Instagram, etc. (por ejemplo) no funcionarían sin este tipo
+                    de servicios.<br><br>Es por eso por lo que todo programador debe saber manejar bases de datos
+                    (al menos lo básico)
+                </p>
+            </div>
+    </section>
+    <section id="proyectos">
+        <h1>Mis Proyectos</h1>
+        <div class="wrapper">
+            <h2><strong>Todos mis proyectos<span>( 4 )</span></strong></h2>
+            <div class="cards">
+                <figure class="cardz">
+                    <img src="https://crehana-blog.s3.amazonaws.com/media/filer_public/76/e0/76e09e74-c3bc-436e-8dd1-218d70842551/blog.jpg" />
+                    <figcaption>Andrómeda (CSS tutorial)</figcaption>
+                </figure>
+
+                <figure class="cardz">
+                    <img src="img/noticias.png" />
+
+                    <figcaption>News Reader</figcaption>
+                </figure>
+
+                <figure class="cardz">
+                    <img src="https://thumbs.dreamstime.com/b/mobile-app-ui-personal-voice-assistant-concept-trendy-responsive-templates-template-flat-design-143546682.jpg" />
+                    <figcaption><em>"Karen"</em><br>(Voice Asistant)</figcaption>
+                </figure>
+
+                <figure class="cardz">
+                    <img src="https://i.pinimg.com/originals/04/00/65/040065a84d292470493536a2e5475778.png" />
+                    <figcaption><em>"Follow Rivers"</em> (2d Game)</figcaption>
+                </figure>
+            </div>
+
+            <h2><strong>Proyectos en desarrollo</strong></h2>
+
+            <div class="news">
+                <figure class="article">
+                    <img src="https://i.blogs.es/46c886/app-bundle/450_1000.jpg" />
+                    <figcaption>
+                        <h3>Lector de Noticias</h3>
+                        <p>
+                            Lector de noticias para Android. Se trata de una WebApp híbrida
+                            hecha con JavaScript, HTML, CSS y usando programación asíncrona
+                            y diferentes tecnologías como RSS o ATOM.
+                        </p>
+                    </figcaption>
+                </figure>
+
+                <figure class="article">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1c4e5067964507.5b4ccc7f9f148.png" />
+                    <figcaption>
+                        <h3>Magic Mirror</h3>
+                        <p>
+                            Magic Mirror es un "espejo inteligente" 100% personalizable y compatible con
+                            Amazon Alexa y Google Home. Hecho con el software de MagicMirror<sup>2</sup>, 
+                            una Raspberry Pi 4, un cristal de doble vía, una pantalla, algo de magia y mucho
+                            cariño.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
         </div>
-        <div id="panel_base_de_datos" class="panel">
-            <p>Bases de datos</p>
-        </div>
-        <div id="panel_contacto" class="panel">
-            <p>Contacto</p>
-        </div>
+    </section>
+    <button id="mybutton" class="btn" onclick="myFunction()"><i class="material-icons">dark_mode</i></button>
+    <div class="copyright">
+        &copy; 2021 David Molina. All rights reserved.
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -67,4 +288,5 @@
     <script src="js/controller.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

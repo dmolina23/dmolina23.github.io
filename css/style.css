@@ -1,5 +1,659 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+/** Estilos del body **/
 body {
-    background-color: #ffffff;
+    margin: 0;
+    color: black;
+    background-color: #fff;
     font-family: 'Poppins', sans-serif;
+}
+
+/** Estilo para hacer toggle entre dark y ligth mode**/
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/** Estilos del menú **/
+#cabecera {
+    background-color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+nav a.active {
+    background: #1abc9c;
+}
+
+#main-menu {
+    position: fixed;
+    text-align: center;
+}
+
+/** Estilos de la introducción" **/
+#section1 {
+    background-color: transparent;
+}
+
+/** Estilos de "Desarrollo Web" **/
+#section2 {
+    background-color: transparent;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+}
+
+/** Estilos de "Programación" **/
+#section3 {
+    background-color: transparent;
+}
+
+/**Estilos de "Bases de Datos" **/
+#section4 {
+    background-color: transparent;
+}
+
+/** Estilos de "Mis Proyectos" **/
+#section5 {
+    background-color: transparent;
+}
+
+section {
+    width: 100%;
+    margin: 0;
+    padding: 200px 100px;
+}
+
+.section1 {
+    align-items: flex-start;
+    background-color: #333;
+    display: flex;
+    min-height: 100%;
+    justify-content: center;
+    padding: var(--spacing-xxl) var(--spacing-l);
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+}
+
+/* Ocultamos la barra lateral para deslizar la página.
+  Sólo funciona en Chrome, Opera y Safari 
+  */
+
+.section1::-webkit-scrollbar {
+    display: none;
+}
+
+/** Estilos de las tarjetas del principio**/
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: var(--spacing-l);
+    grid-row-gap: var(--spacing-l);
+    max-width: var(--width-container);
+    width: 100%;
+}
+
+@media(min-width: 540px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width: 960px) {
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media(min-width: 540px) {
+    .content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media(min-width: 960px) {
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.card {
+    list-style: none;
+    position: relative;
+    background-color: #333;
+    border: none;
+    border-radius: var(--spacing-l);
+}
+
+.cardz {
+    list-style: none;
+    position: relative;
+    background-color: #333;
+    border: none;
+    border-radius: var(--spacing-l);
+}
+
+.cardz::before {
+    display: block;
+    padding-bottom: 150%;
+    width: 100%;
+}
+
+.card:before {
+    content: '';
+    display: block;
+    padding-bottom: 150%;
+    width: 100%;
+}
+
+.card__background {
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--spacing-l);
+    bottom: 0;
+    filter: brightness(0.75) saturate(1.2) contrast(0.85);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: center;
+    transform: scale(1) translateZ(0);
+    transition: filter 200ms linear, transform 200ms linear;
+}
+
+.card:hover .card__background {
+    transform: scale(1.05) translateZ(0);
+}
+
+.card-grid:hover>.card:not(:hover) .card__background {
+    filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+}
+
+.card__content {
+    left: 0;
+    padding: var(--spacing-l);
+    position: absolute;
+    top: 0;
+}
+
+.card__category {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-s);
+    text-transform: uppercase;
+}
+
+.card__heading {
+    color: var(--text-lighter);
+    font-size: 1.9rem;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+    line-height: 1.4;
+    word-spacing: 100vw;
+}
+
+.shadow {
+    position: absolute;
+    bottom: 100%;
+    height: 300px;
+    width: 100%;
+    left: 0;
+    z-index: 20;
+    background: linear-gradient(to top, #333, #444);
+}
+
+:root {
+    --background-dark: #2d3548;
+    --text-light: rgba(255, 255, 255, 0.6);
+    --text-lighter: rgba(255, 255, 255, 0.9);
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 64px;
+    --width-container: 1200px;
+}
+
+/** Estilos del botón "Dark-mode" **/
+.btn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #333;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    color: #fff;
+}
+
+#mybutton {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+/** Estilos de las barras de aprendizaje **/
+::selection {
+    color: black;
+    background: rgba(97, 157, 0, 0.83);
+}
+
+.skill-bars {
+    color: rgba(145, 0, 97, 0.87);
+    padding: 25px 30px;
+    width: 600px;
+    background: black;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.skill-bars .bar {
+    margin: 20px 0;
+}
+
+.skill-bars .bar:first-child {
+    margin-top: 0px;
+}
+
+.skill-bars .bar .info {
+    margin-bottom: 5px;
+}
+
+.skill-bars .bar .info span {
+    font-weight: 500;
+    font-size: 17px;
+    opacity: 0;
+    animation: showText 0.5s 1s linear forwards;
+}
+
+@keyframes showText {
+    100% {
+        opacity: 1;
+    }
+}
+
+.skill-bars .bar .progress-line {
+    height: 10px;
+    width: 100%;
+    background: #f0f0f0;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 1px rgba(255, 255, 255, 0.8);
+    animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+@keyframes animate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.bar .progress-line span {
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: rgba(97, 157, 0, 0.83);
+    animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+}
+
+.bar .progress-line.html span {
+    width: 90%;
+}
+
+.bar .progress-line.javascript span {
+    width: 60%;
+}
+
+.bar .progress-line.css span {
+    width: 85%;
+}
+
+.bar .progress-line.webapps span {
+    width: 50%;
+}
+
+.bar .progress-line.java span {
+    width: 95%;
+}
+
+.bar .progress-line.python span {
+    width: 30%;
+}
+
+.bar .progress-line.react span {
+    width: 20%;
+}
+
+.bar .progress-line.nodejs span {
+    width: 20%;
+}
+
+.bar .progress-line.oracle span {
+    width: 80%;
+}
+
+.bar .progress-line.mysql span {
+    width: 80%;
+}
+
+.bar .progress-line.firebase span {
+    width: 25%;
+}
+
+.progress-line span::before {
+    position: absolute;
+    content: "";
+    top: -10px;
+    right: 0;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+.progress-line span::after {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    font-weight: 500;
+    background: #000;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText2 {
+    100% {
+        opacity: 1;
+    }
+}
+
+.progress-line.html span::after {
+    content: "";
+}
+
+.progress-line.javascript span::after {
+    content: "";
+}
+
+.progress-line.css span::after {
+    content: "";
+}
+
+.progress-line.webapps span::after {
+    content: "";
+}
+
+.progress-line.java span::after {
+    content: "";
+}
+
+.progress-line.python span::after {
+    content: "";
+}
+
+.progress-line.react span::after {
+    content: "";
+}
+
+.progress-line.nodejs span::after {
+    content: "";
+}
+
+.progress-line.oracle span::after {
+    content: "";
+}
+
+.progress-line.mysql span::after {
+    content: "";
+}
+
+.progress-line.firebase span::after {
+    content: "";
+}
+
+/** Estilos de "mis proyectos" **/
+.abs,
+h2:after,
+.cards .cardz figcaption,
+.cards .cardz:after,
+.news .card figcaption,
+.news .card:after,
+.news .article figcaption {
+  position: absolute;
+}
+.rel,
+h2,
+h2 strong,
+.cards .cardz,
+.news .card,
+.news .article {
+  position: relative;
+}
+.fix {
+  position: fixed;
+}
+.dfix {
+  display: inline;
+}
+.dib {
+  display: inline-block;
+}
+.db {
+  display: block;
+}
+.dn {
+  display: none;
+}
+.df,
+.cards,
+.news {
+  display: flex;
+}
+.dif {
+  display: inline-flex;
+}
+.dg {
+  display: grid;
+}
+.dig {
+  display: inline-grid;
+}
+.vm,
+h2,
+h2 strong,
+h2 span {
+  vertical-align: middle;
+}
+.wrapper {
+  padding: 15px;
+}
+h2 {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+h2 strong {
+  z-index: 2;
+  background: #24282f;
+  padding: 4px 8px;
+}
+h2 span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+
+h2:after {
+  content: '';
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+.cards,
+.news {
+  flex-flow: row wrap;
+}
+.cards .cardz,
+.news .cardz {
+  margin: 20px;
+  width: 180px;
+  height: 270px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
+}
+.cards .cardz img,
+.news .card img {
+  width: 100%;
+  min-height: 100%;
+}
+.cards .cardz figcaption,
+.news .card figcaption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  background: rgb(95, 0, 196);
+  color: #fff;
+  transform: translateY(100%);
+  transition: 0.3s;
+}
+.cards .cardz:after,
+.news .card:after {
+  content: '';
+  z-index: 10;
+  width: 200%;
+  height: 100%;
+  top: -90%;
+  left: -20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  background: linear-gradient(to top, transparent, #fff 15%, rgba(255,255,255,0.5));
+  transition: 0.3s;
+}
+.cards .cardz:hover,
+.news .card:hover,
+.cards .cardz:focus,
+.news .card:focus,
+.cards .cardz:active,
+.news .card:active {
+  box-shadow: 0 8px 16px 3px rgba(0,0,0,0.6);
+  transform: translateY(-3px) scale(1.05) rotateX(15deg);
+}
+.cards .cardz:hover figcaption,
+.news .card:hover figcaption,
+.cards .cardz:focus figcaption,
+.news .card:focus figcaption,
+.cards .cardz:active figcaption,
+.news .card:active figcaption {
+  transform: none;
+}
+.cards .cardz:hover:after,
+.news .card:hover:after,
+.cards .cardz:focus:after,
+.news .card:focus:after,
+.cards .cardz:active:after,
+.news .card:active:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+.news .article {
+  overflow: hidden;
+  width: 350px;
+  height: 235px;
+  margin: 20px;
+}
+.news .article img {
+  width: 100%;
+  min-height: 100%;
+  transition: 0.2s;
+}
+.news .article figcaption {
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(51,51,51,0.3);
+  color: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 40px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: rgba(6,18,53,0.6);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: 0.2s;
+}
+.news .article figcaption h3 {
+  color: rgb(95, 0, 196);
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.news .article:hover img,
+.news .article:focus img,
+.news .article:active img {
+  filter: blur(3px);
+  transform: scale(0.97);
+}
+.news .article:hover figcaption,
+.news .article:focus figcaption,
+.news .article:active figcaption {
+  opacity: 1;
+  transform: none;
+}
+
+.copyright {
+    font-size: 10pt;
+    text-align: left;
+    margin-left: 0.4rem;
+    padding-bottom: 10px;
+    color: grey;
 }
