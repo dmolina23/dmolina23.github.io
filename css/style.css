@@ -264,7 +264,7 @@ section {
 }
 
 .skill-bars {
-    color: rgba(145, 0, 97, 0.87);
+    color: rgb(255, 255, 255);
     padding: 25px 30px;
     width: 600px;
     background: black;
