@@ -73,7 +73,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://wallpapercrafter.com/sizes/2560x1440/47288-mr-robot-tv-shows-hd-4k-logo-minimalism.jpg
+avatar: https://miro.medium.com/v2/resize:fit:268/0*S1KTg8VcrzXtOSH9.jpeg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
