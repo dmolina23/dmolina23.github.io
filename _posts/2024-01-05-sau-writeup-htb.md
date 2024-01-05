@@ -1,6 +1,6 @@
 ---
 title: Sau Writeup - HackTheBox
-date: 2023-12-29
+date: 2024-01-05
 categories:
   - Writeups
   - HTB
