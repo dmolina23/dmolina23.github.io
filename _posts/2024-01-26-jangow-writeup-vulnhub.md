@@ -228,7 +228,7 @@ uname -a
 
 After running it, we can see that the Linux Kernel version running is 4.4.0-31-generic which is vulnerable to the vulnerability **CVE-2016-5195** (this vulnerability affects memory race conditions, it allows us to escalate privileges locally using the *copy-on -write* feature that allows us to write memory addresses that should be read-only).
 
-Searching the internet we found the exploit [Cowroot](). We download it using **wget**. Once we have it, we access the FTP server again and run:
+Searching the internet we found the exploit Cowroot. We download it using **wget**. Once we have it, we access the FTP server again and run:
 
 ```bash
 cd /hom/jangow01
