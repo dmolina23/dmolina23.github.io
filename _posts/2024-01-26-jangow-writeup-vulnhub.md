@@ -1,14 +1,14 @@
 ---
-title: Sau Writeup - HackTheBox
-date: 2023-12-29
+title: Jangow Writeup - Vulnhub
+date: 2024-01-26
 categories:
   - Writeups
-  - HTB
+  - Vulnhub
 tags:
   - Linux
   - CTF
   - Easy
-  - "#Vulnhub"
+  - Vulnhub
 img_path: /assets/img/commons/jangow/
 image: jangow.png
 ---
