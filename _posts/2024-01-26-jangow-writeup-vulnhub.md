@@ -89,7 +89,7 @@ After the port enumeration, we can see that ports 21 (ftp) and 80 (http) are ope
 
 We access the `/site` directory:
 
-![website](site)
+![website](site.png)
 
 ## Information gathering
 ---
