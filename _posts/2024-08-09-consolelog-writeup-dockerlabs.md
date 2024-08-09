@@ -72,7 +72,7 @@ We can see a file named `server.js` let's see what it contains:
 We have found a password, let's try to use Hydra to get into the SSH server:
 
 ```bash
-hydra -L /usr/share/wordlists/seclists/Usernames/xat-net-10-million-usernames.txt -P lapa++++++todas ssh://172.17.0.2:5000 -s 22 -t 64
+hydra -L /usr/share/wordlists/seclists/Usernames/xat-net-10-million-usernames.txt -P lapa?????????todas ssh://172.17.0.2:5000 -s 22 -t 64
 ```
 
 We can see now that the user is lovely, and we can access via SSH with his credentials:
