@@ -87,6 +87,7 @@ ssh lovely@172.17.0.2 -p 5000
 ---
 
 First, we should export the xterm to easily work with the SSH terminal. We can do this just by executing the following:
+
 ```bash
 export TERM=xterm
 ```
@@ -123,7 +124,7 @@ We can execute the following to get a full functional shell:
 python3 -c "import pty;pty.spawn('/bin/bash')"
 ```
 
-![sudo_access](privilege2.png)
+![privesc2](nano_privesc_2.png)
 
 Now we have gained superuser access and we have the whole system committed.
 
